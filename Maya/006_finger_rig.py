@@ -7,8 +7,6 @@
 # User may select root joints freely, it doesn't how many joints balonging to a certain hand is selected, it will always be processed
 # DO NOT SELECT ANY JOINT YOU WISH NOT AS FINGER JOINTS
 
-# TODO: There is double transform for finger IK, fix this
-
 import maya.cmds as mc
 import re
 
@@ -289,11 +287,6 @@ if valid:
         major_Roll_mult = mc.createNode('multiplyDivide', n=major_control_group_name+"_rollMult")
         mc.setAttr(major_Roll_mult+".input2X", 90)
         mc.connectAttr(major_control_name+".tx", major_Roll_mult+".input1X")
-        
-        # Create spread multiplier to map +-1 to +-15
-        #majorSpread_mult = mc.createNode('multiplyDivide', n=major_control_group_name+"_spreadMult")
-        #mc.setAttr(majorSpread_mult+".input2X", 20)
-        #mc.connectAttr(major_control_name+".tz", majorSpread_mult+".input1X")
         
         majorSpread_mult_arr = []
         spreadMult_counter = 0

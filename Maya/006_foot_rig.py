@@ -2,6 +2,10 @@ import maya.cmds as mc
 import maya.api.OpenMaya as om
 import re
 
+# TODO: Auto link created foot controls to leg IK system
+#       Create FK toe rot control, link to IKFK switch
+
+# TODO: Merge this to IKFK system?
 
 def pack_selected_ctrl():
     sel_list = mc.ls(selection=1)

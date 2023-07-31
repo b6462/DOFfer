@@ -1,3 +1,10 @@
+# NOTE: This script is to be run after full boneChain naming Fixed
+# NOTE: This script also assumes joint name sigularity, so no duplicate names
+
+# This script will check each joint root by name
+# And assigne according joint orient fix to it and it's child
+# No selection is required
+
 import maya.cmds as mc
 
 def showOrient(self):

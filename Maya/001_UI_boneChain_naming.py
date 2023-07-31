@@ -1,3 +1,14 @@
+# This script aims to name bone chains automatically
+# Root
+# Root End
+# Root Mid End
+# Root Mid Tip End
+# Root spine2 spine3 spine4 ... End
+
+# 1.Select the root of the chain
+# 2.Give a name and a side
+# 3.Execute
+
 import maya.cmds as cmds
 
 # Create UI window  
@@ -16,13 +27,13 @@ label = cmds.text(label='Joint_Name')
 # Text input field
 text_name = cmds.textField()  
 
-# Checkbox 1
+# Marker L
 cb1 = cmds.checkBox(label='L')
 
-# Checkbox 2
+# Marker M
 cb2 = cmds.checkBox(label='M') 
 
-# Checkbox 3
+# Marker R
 cb3 = cmds.checkBox(label='R')
 
 check_log = [False,False,False]
@@ -53,8 +64,6 @@ cmds.checkBox(cb1, edit=True, changeCommand=exclusiveCheck)
 cmds.checkBox(cb2, edit=True, changeCommand=exclusiveCheck)
 cmds.checkBox(cb3, edit=True, changeCommand=exclusiveCheck)
 
-# Button
-button = cmds.button(label='Execute', command=printText)          
 
 # Function to print selected prefixes + text input        
 def printText(self):
@@ -122,9 +131,8 @@ def printText(self):
                 mc.select(tmp_target_joint)
                 mc.rename(tmp_newName)
             
-        
-    
-
+# Button
+button = cmds.button(label='Execute', command=printText)          
 
 # Show UI window  
 cmds.showWindow(window)
