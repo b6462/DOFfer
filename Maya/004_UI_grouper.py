@@ -25,11 +25,11 @@ def unite_group(*args):
     mc.rename(tmp_group_name)
 
 
-def create_custom_window():
-    if mc.window("customWindow", exists=True):
-        mc.deleteUI("customWindow", window=True)
+def create_rig004_window():
+    if mc.window("RIG_004_window", exists=True):
+        mc.deleteUI("RIG_004_window", window=True)
     
-    window = mc.window("customWindow", title="Custom Window", widthHeight=(250, 150))
+    window = mc.window("RIG_004_window", title="RIG_004 - Grouper", widthHeight=(250, 150))
     mc.columnLayout(adjustableColumn=True)
     mc.text(label="RIG_004 - Grouper", align="center", font="boldLabelFont", height=30)
 
@@ -42,4 +42,4 @@ def create_custom_window():
 
     mc.showWindow(window)
 
-create_custom_window()
+create_rig004_window()
