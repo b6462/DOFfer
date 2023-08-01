@@ -19,13 +19,14 @@ layout = cmds.columnLayout()
 cmds.columnLayout( columnAttach=('both', 5), rowSpacing=10, columnWidth=250 )
 
 # Title 
-title = cmds.text(label='RIG_001 - Batch Rename')  
-
+title = mc.text(label="RIG_001 - Batch Rename", align="center", font="boldLabelFont", height=30)
 # Joint Name label  
-label = cmds.text(label='Joint_Name')
+label = cmds.text(label='Joint_Name', align="left")
 
+# Create the text input field (lineEdit box)
+global text_field
 # Text input field
-text_name = cmds.textField()  
+text_name = mc.textField(placeholderText="Enter text here...")
 
 # Marker L
 cb1 = cmds.checkBox(label='L')

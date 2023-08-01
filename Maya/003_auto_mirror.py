@@ -22,3 +22,4 @@ for j in root_list:
         tmp_checklist = mc.ls(tmp_other)
         if len(tmp_checklist)==0:
             mc.mirrorJoint(mirrorYZ=1, mirrorBehavior=1, searchReplace=("r_", "l_"))
+            

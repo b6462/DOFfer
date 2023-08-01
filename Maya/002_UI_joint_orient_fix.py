@@ -56,7 +56,7 @@ def execute_orientFix(self):
 
 window = mc.window(title="RIG_002 - Fix Orient")  
 form = mc.formLayout(numberOfDivisions=100)
-title = mc.text(label='RIG_002 - Fix Orient')  
+title = mc.text(label="RIG_002 - Fix Orient", align="center", font="boldLabelFont", height=30)
 b1 = mc.button(label='Show Orient', command=showOrient)
 b2 = mc.button(label='Hide Orient', command=hideOrient)
 b3 = mc.button(label='Execute', command=execute_orientFix)
