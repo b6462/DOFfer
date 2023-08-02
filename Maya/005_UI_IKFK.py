@@ -218,6 +218,7 @@ def create_clean_control(parent_name, control_name, color_theme=13, control_scal
     tmp_osPos = mc.xform(os=1, q=1, t=1)
     # 1 or -1, this indicates how to move controller handle further from world center
     if tmp_osPos[0] != 0:
+        # TODO: What if joint is at world center
         tmp_dir = tmp_osPos[0] / abs(tmp_osPos[0])
     else:
         tmp_dir = 0
@@ -302,6 +303,7 @@ def create_switch_on_selected_roots(packFK, IKControlPackage):
     switch_dist = mc.floatSliderGrp(ikf3, query=True, value=True)
     
     sel_list = mc.ls(selection=1)
+    # TODO: Make this list fit selecting chain
     j_suffix_pack = ["Root_JNT", "Mid_JNT", "End_JNT"]
     j_IK = "IK"
     j_FK = "FK"
@@ -381,7 +383,7 @@ def create_switch_on_selected_roots(packFK, IKControlPackage):
             # TODO: Change from math method to constraint weight method
             
             
-            for i in range(0, 3):
+            for i in range(0, 7):
                 j_IK = j_prefix + "IK" + j_suffix_pack[i]
                 j_FK = j_prefix + "FK" + j_suffix_pack[i]
                 j_BK = j_prefix + "Blend" + j_suffix_pack[i]

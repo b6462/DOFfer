@@ -27,7 +27,7 @@ def execute_orientFix(self):
         "middle" : ["yxz", "zup"],
         "ring" : ["yxz", "zup"],
         "pinky" : ["yxz", "zup"],
-        "thumb" : ["yxz", "ydown"],
+        "thumb" : ["yxz", "xup"],
         "leg" : ["yxz", "xup"],
         "foot" : ["yxz", "xup"],
         "butt" : ["yxz", "xup"],
