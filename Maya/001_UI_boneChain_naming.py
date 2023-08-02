@@ -9,19 +9,19 @@
 # 2.Give a name and a side
 # 3.Execute
 
-import maya.cmds as cmds
+import maya.cmds as mc
 
 # Create UI window  
-window = cmds.window(title="RIG_001 - Batch Rename")  
+window = mc.window(title="RIG_001 - Batch Rename")  
 
 # Column Layout
-layout = cmds.columnLayout()
-cmds.columnLayout( columnAttach=('both', 5), rowSpacing=10, columnWidth=250 )
+layout = mc.columnLayout()
+mc.columnLayout( columnAttach=('both', 5), rowSpacing=10, columnWidth=250 )
 
 # Title 
 title = mc.text(label="RIG_001 - Batch Rename", align="center", font="boldLabelFont", height=30)
 # Joint Name label  
-label = cmds.text(label='Joint_Name', align="left")
+label = mc.text(label='Joint_Name', align="left")
 
 # Create the text input field (lineEdit box)
 global text_field
@@ -29,49 +29,49 @@ global text_field
 text_name = mc.textField(placeholderText="Enter text here...")
 
 # Marker L
-cb1 = cmds.checkBox(label='L')
+cb1 = mc.checkBox(label='L')
 
 # Marker M
-cb2 = cmds.checkBox(label='M') 
+cb2 = mc.checkBox(label='M') 
 
 # Marker R
-cb3 = cmds.checkBox(label='R')
+cb3 = mc.checkBox(label='R')
 
 check_log = [False,False,False]
 
 # Function to exclusive check 
 def exclusiveCheck(wut):
-    if cmds.checkBox(cb1, query=True, value=True) and not check_log[0]:
-        cmds.checkBox(cb2, edit=True, value=False)
-        cmds.checkBox(cb3, edit=True, value=False)
+    if mc.checkBox(cb1, query=True, value=True) and not check_log[0]:
+        mc.checkBox(cb2, edit=True, value=False)
+        mc.checkBox(cb3, edit=True, value=False)
         check_log[1] = False
         check_log[2] = False
         check_log[0] = True
-    elif cmds.checkBox(cb2, query=True, value=True) and not check_log[1]:
-        cmds.checkBox(cb1, edit=True, value=False)
-        cmds.checkBox(cb3, edit=True, value=False)
+    elif mc.checkBox(cb2, query=True, value=True) and not check_log[1]:
+        mc.checkBox(cb1, edit=True, value=False)
+        mc.checkBox(cb3, edit=True, value=False)
         check_log[0] = False
         check_log[2] = False
         check_log[1] = True
-    elif cmds.checkBox(cb3, query=True, value=True) and not check_log[2]:
-        cmds.checkBox(cb1, edit=True, value=False)
-        cmds.checkBox(cb2, edit=True, value=False)
+    elif mc.checkBox(cb3, query=True, value=True) and not check_log[2]:
+        mc.checkBox(cb1, edit=True, value=False)
+        mc.checkBox(cb2, edit=True, value=False)
         check_log[1] = False
         check_log[0] = False
         check_log[2] = True
 
 # Add callbacks to checkboxes          
-cmds.checkBox(cb1, edit=True, changeCommand=exclusiveCheck)  
-cmds.checkBox(cb2, edit=True, changeCommand=exclusiveCheck)
-cmds.checkBox(cb3, edit=True, changeCommand=exclusiveCheck)
+mc.checkBox(cb1, edit=True, changeCommand=exclusiveCheck)  
+mc.checkBox(cb2, edit=True, changeCommand=exclusiveCheck)
+mc.checkBox(cb3, edit=True, changeCommand=exclusiveCheck)
 
 
 # Function to print selected prefixes + text input        
 def printText(self):
-    name_str = cmds.textField(text_name, query=True, text=True)    
-    l = cmds.checkBox(cb1, query=True, value=True)  
-    m = cmds.checkBox(cb2, query=True, value=True)
-    r = cmds.checkBox(cb3, query=True, value=True)
+    name_str = mc.textField(text_name, query=True, text=True)    
+    l = mc.checkBox(cb1, query=True, value=True)  
+    m = mc.checkBox(cb2, query=True, value=True)
+    r = mc.checkBox(cb3, query=True, value=True)
     side_str = ((l * 'l') + (m * 'm') + (r * 'r'))
     
     # This script aims to name bone chains automatically
@@ -133,7 +133,7 @@ def printText(self):
                 mc.rename(tmp_newName)
             
 # Button
-button = cmds.button(label='Execute', command=printText)          
+button = mc.button(label='Execute', command=printText)          
 
 # Show UI window  
-cmds.showWindow(window)
+mc.showWindow(window)
